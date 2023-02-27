@@ -79,7 +79,7 @@ def csvdo(args):
     return dfdoer(dframe, args.threads, args.verbose)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Table-do. Run a command, substituting in values according to a table structure."
     )
@@ -113,3 +113,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args.func(args)
+
+if __name__ == "__main__":
+    main()
