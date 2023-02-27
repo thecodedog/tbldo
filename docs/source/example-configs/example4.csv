@@ -1,0 +1,10 @@
+,,--opt1,--opt2
+input1,input2,x,y_{__COUNTER__}
+input1_1,input2_1,x_1,y_{__COUNTER__}
+input1_2,input2_2,x_2,y_{__COUNTER__}
+input1_3,input2_3,x_3,y_{__COUNTER__}
+input1_4,input2_4,x_4,y_{__COUNTER__}
+input1_5,input2_5,x_5,y_{__COUNTER__}
+input1_6,input2_6,x_6,y_{__COUNTER__}
+input1_7,input2_7,x_7,y_{__COUNTER__}
+input1_8,input2_8,x_8,y_{__COUNTER__}

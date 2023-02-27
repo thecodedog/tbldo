@@ -1,0 +1,5 @@
+,,--opt1,--opt2,var=
+input1,{var},{var}_again,well_{var}_again,hello
+input1_1,{var},{var}_again,well_{var}_again,hi
+input1_2,{var},{var}_again,well_{var}_again,whats up
+input1_3,{var},{var}_again,well_{var}_again,suh
