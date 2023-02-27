@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'tbldo'
-copyright = '2023, codedog'
-author = 'codedog'
+copyright = '2023, thecodedog'
+author = 'thecodedog'
 release = '0.1'
 
 # -- General configuration ---------------------------------------------------
