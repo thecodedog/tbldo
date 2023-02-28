@@ -12,37 +12,21 @@ import pandas as pd
 
 COMMAND_HELP = "The command to run and apply substitutions to"
 
+def _run_command(command, verbose):
+    if verbose:
+        print(command)
+    sp.run(command, shell=True)
 
 def _run_sql_row(row, colnames, command, verbose):
     substitutions = {key: value for key, value in zip(colnames, row)}
     command = command.format(**substitutions)
-    if verbose:
-        print(command)
-    sp.run(command, shell=True)
+    _run_command(command, verbose)
 
 
-def _run_df_row(row, verbose):
-    command = row["__COMMAND__"]
-    del row["__COMMAND__"]
-    for key, value in row.items():
-        new_command = command.replace(f"{{{key}}}", value)
-        if new_command == command:
-            wn.warn(
-                f"{key} was found in row columns but not in command substitution patterns"
-            )
-        command = new_command
-    if verbose:
-        print(command)
-    sp.run(command, shell=True)
-
-
-def dfdoer(dframe, threads=1, verbose=False):
-    with ThreadPoolExecutor(threads) as executor:
-        return list(
-            executor.map(
-                _run_df_row, (item[1] for item in dframe.iterrows()), it.repeat(verbose)
-            )
-        )
+def _run_df_row(row, command, verbose):
+    row_dict = row.to_dict()
+    command = command.format(**row_dict)
+    _run_command(command, verbose)
 
 
 def sqldo(args):
@@ -75,8 +59,12 @@ def sqldo(args):
 
 def csvdo(args):
     dframe = pd.read_csv(args.csv, delimiter=args.delimeter)
-    dframe["__COMMAND__"] = args.command
-    return dfdoer(dframe, args.threads, args.verbose)
+    with ThreadPoolExecutor(args.threads) as executor:
+        return list(
+            executor.map(
+                _run_df_row, (dframe.iloc[i] for i in range(len(dframe))), it.repeat(args.command), it.repeat(args.verbose)
+            )
+        )
 
 
 def main():
