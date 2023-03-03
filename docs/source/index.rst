@@ -110,4 +110,4 @@ Tbldo can be installed via pip
 
 License
 =======
-tbldo is licensed under the `MIT license. <https://github.com/elspacedoge/tbldo/blob/main/LICENSE>`_
+tbldo is licensed under the `MIT license. <https://github.com/thecodedog/tbldo/blob/main/LICENSE>`_

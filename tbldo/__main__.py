@@ -12,10 +12,12 @@ import pandas as pd
 
 COMMAND_HELP = "The command to run and apply substitutions to"
 
+
 def _run_command(command, verbose):
     if verbose:
         print(command)
     sp.run(command, shell=True)
+
 
 def _run_sql_row(row, colnames, command, verbose):
     substitutions = {key: value for key, value in zip(colnames, row)}
@@ -62,7 +64,10 @@ def csvdo(args):
     with ThreadPoolExecutor(args.threads) as executor:
         return list(
             executor.map(
-                _run_df_row, (dframe.iloc[i] for i in range(len(dframe))), it.repeat(args.command), it.repeat(args.verbose)
+                _run_df_row,
+                (dframe.iloc[i] for i in range(len(dframe))),
+                it.repeat(args.command),
+                it.repeat(args.verbose),
             )
         )
 
@@ -101,6 +106,7 @@ def main():
 
     args = parser.parse_args()
     args.func(args)
+
 
 if __name__ == "__main__":
     main()
