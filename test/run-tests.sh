@@ -9,6 +9,10 @@ python3 ../tbldo/__main__.py csv "echo {arg3} {arg1} {arg2}" test-delimiter-ampe
 echo "running csv ampersand lineterminator test"
 python3 ../tbldo/__main__.py csv "echo {arg3} {arg1} {arg2}" test-newline-ampersand.csv --lineterminator '&' > outputs/csv-newline-ampersand-test.out
 
+echo "running csv ampersand quote char test"
+python3 ../tbldo/__main__.py csv "echo {arg3} {arg1} {arg2}" test-quotechar-ampersand.csv --quotechar '&' > outputs/csv-quotechar-ampersand-test.out
+
+
 echo "running sql test (command line sql)"
 python3 ../tbldo/__main__.py sql "echo {arg3} {arg1} {arg2}" sqlite:///test.db "SELECT * FROM test;" > outputs/db-cl-test.out
 
@@ -19,5 +23,6 @@ python3 ../tbldo/__main__.py sql "echo {arg3} {arg1} {arg2}" sqlite:///test.db t
 diff outputs/csv-test.out expected/expected.out
 diff outputs/csv-delmieter-ampersand-test.out expected/expected.out
 diff outputs/csv-newline-ampersand-test.out expected/expected.out
+diff outputs/csv-quotechar-ampersand-test.out expected/expected-quotechar.out
 diff outputs/db-cl-test.out expected/expected.out
 diff outputs/db-file-test.out expected/expected.out
