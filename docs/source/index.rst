@@ -105,6 +105,19 @@ The commands for the corresponding sql subcommand can be viewed via the help as 
 
 Note that the input query's final statement must be one that returns a table.
 
+DISCLAIMER:
+sql mode leverages sqlalchemy which abstracts away which database
+implementation is being connected to. As such any database implementation
+supported by sqlalchemy SHOULD be supported by tbldo too. However, not 
+all sql implementations have been tested.
+
+tested sql implementations:
+* sqlite.
+
+If you would like to use tbldo for other sql implementations, give it
+a shot there is a good chance it will work. If not, make an issue
+on the tbldo `github <https://github.com/thecodedog/tbldo>`_.
+
 Installation
 ============
 Tbldo can be installed via pip

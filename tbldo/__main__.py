@@ -89,7 +89,7 @@ def main():
     parser_csv.add_argument("csv", help="Path to the csv file")
     parser_csv.add_argument("--delimiter", default=",", help="The delimiter to use")
     parser_csv.add_argument(
-        "--lineterminator", default="\n", help="The new line character to use"
+        "--lineterminator", default=None, help="The new line character to use"
     )
     parser_csv.add_argument(
         "--quotechar", default='"', help="The quote character to use"
