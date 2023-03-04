@@ -60,7 +60,7 @@ def sqldo(args):
 
 
 def csvdo(args):
-    dframe = pd.read_csv(args.csv, delimiter=args.delimeter)
+    dframe = pd.read_csv(args.csv, delimiter=args.delimiter, lineterminator=args.lineterminator)
     with ThreadPoolExecutor(args.threads) as executor:
         return list(
             executor.map(
@@ -82,7 +82,8 @@ def main():
     parser_csv = subparsers.add_parser("csv", help="csv input help")
     parser_csv.add_argument("command", help=COMMAND_HELP)
     parser_csv.add_argument("csv", help="Path to the csv file")
-    parser_csv.add_argument("--delimeter", default=",", help="The delimiter to use")
+    parser_csv.add_argument("--delimiter", default=",", help="The delimiter to use")
+    parser_csv.add_argument("--lineterminator", default="\n", help="The new line character to use")
     parser_csv.set_defaults(func=csvdo)
 
     parser_sql = subparsers.add_parser("sql", help="sql input help")
