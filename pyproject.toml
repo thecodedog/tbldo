@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tbldo"
-version = "1.0.1"
+version = "1.0.3"
 description = "Run a linux command with varying inputs according to tabular data"
 readme = "README.md"
 authors = [{ name = "thecodedog", email = "elcodedog@gmail.com" }]
@@ -17,8 +17,8 @@ classifiers = [
 ]
 keywords = ["tabular", "linux", "command", "configuration"]
 dependencies = [
-    "pandas",
-    "SQLAlchemy",
+    "pandas==1.5.3",
+    "SQLAlchemy==2.0.4",
 ]
 requires-python = ">=3.10"
 
