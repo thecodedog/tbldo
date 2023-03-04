@@ -67,16 +67,21 @@ Calling tbldo csv with the help option shows this:
    $ tbldo csv --help
 
 
-   usage: tbldo csv [-h] [--delimeter DELIMETER] command csv
+   usage: tbldo csv [-h] [--delimiter DELIMITER] [--lineterminator LINETERMINATOR] [--quotechar QUOTECHAR] command csv
 
    positional arguments:
    command               The command to run and apply substitutions to
    csv                   Path to the csv file
 
-   optional arguments:
+   options:
    -h, --help            show this help message and exit
-   --delimeter DELIMETER
+   --delimiter DELIMITER
                            The delimiter to use
+   --lineterminator LINETERMINATOR
+                           The new line character to use
+   --quotechar QUOTECHAR
+                           The quote character to use
+
 
 sql
 ---
